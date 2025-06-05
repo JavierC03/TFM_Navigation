@@ -1,5 +1,0 @@
-initial_pose:
-  x: 0.8423743  # Posición x inicial del robot (metros)
-  y: -12.66922  # Posición y inicial del robot (metros)
-  z: 0.0341028  # Posición z inicial del robot (normalmente 0.0)
-  yaw: 0.0  # Orientación inicial del robot en radianes
