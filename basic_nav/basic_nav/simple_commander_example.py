@@ -1,4 +1,4 @@
-from nav2_simple_commander.robot_navigator import BasicNavigator, NavigationResult
+from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
 from geometry_msgs.msg import PoseStamped
 import rclpy
 import time
@@ -8,9 +8,8 @@ def main():
         # Inicializa el sistema ROS 2
         rclpy.init()
         
-        # Crear un nodo explícito (si es necesario según la implementación)
-        node = rclpy.create_node('simple_commander_node')
-        navigator = BasicNavigator(node=node)  # Pasar el nodo como argumento si es requerido
+        # Crear el navegador (sin pasar un nodo explícito)
+        navigator = BasicNavigator()
 
         # Definir la pose objetivo
         goal_pose = PoseStamped()
@@ -31,9 +30,9 @@ def main():
 
         # Obtener y mostrar el resultado
         result = navigator.getResult()
-        if result == NavigationResult.SUCCEEDED:
+        if result == TaskResult.SUCCEEDED:  # Use imported TaskResult
             print("El robot alcanzó el objetivo.")
-        elif result == NavigationResult.CANCELED:
+        elif result == TaskResult.CANCELED:
             print("La navegación fue cancelada.")
         else:
             print("La navegación falló.")
